@@ -25,11 +25,12 @@ public class QuoteServiceImpl implements QuoteService {
 		String url = "http://quotes.rest/qod.json";
 
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-
+		
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		
 		JsonNode root = mapper.readTree(response.getBody());
+		
 		System.out.println(root.toString());
 		
 		ResponseWrapper responseWrapper = mapper.treeToValue(root, ResponseWrapper.class);
