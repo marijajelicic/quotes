@@ -46,7 +46,6 @@ public class QuoteServiceImpl implements QuoteService {
 		qDto.setTags(q.getTags());
 		qDto.setTitle(q.getTitle());
 
-
 		return qDto;
 	}
 
