@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/marijajelicic/library'
+                git 'https://github.com/marijajelicic/quotes'
             }
         }
         stage ('Docker') {
