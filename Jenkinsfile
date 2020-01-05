@@ -39,7 +39,7 @@ pipeline {
             steps{
                 script{
                     sh '''
-                            ddocker run -d --name quotes -p 8082:8082 quotes:latest
+                            docker run -d --name quotes -p 8082:8082 quotes:latest
                         '''
                 }
             }
