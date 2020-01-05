@@ -32,6 +32,28 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy') {
+            when {
+                branch 'master'
+            }
+            steps{
+                script{
+                    sh '''
+                            ddocker run -d --name quotes -p 8082:8082 quotes:latest
+                        '''
+                }
+            }
+            post {
+                failure {
+                    emailext (
+                        subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER} ",
+                        body: """CI/CD pipeline greska u "Build" fazi. Log fajl se moze videti na: href=${env.BUILD_URL} """,
+                        to: "marija.jelicic@netcast.rs",
+                        from: "jenkins@jenkins.netcast.rs"
+                    )
+                }
+            }
+        }
     }
 }
 
